@@ -45,6 +45,15 @@ class Hnbb(cmd.Cmd):
         """Handles empty line i.e when enter is pressed without any command"""
         pass
 
+    def do_create(self, line):
+        arg = line.split()
+        if arg[0].lower() != "create":
+            print("Ivalid syntax: use create <name>")
+            return
+        name = arg[1]
+        new_user = User(name)
+        myuser[new_user.id] = new_user
+        print(f"New user created with user id: {new_user.id} and name: {new_user.name}")
 
 if __name__ == "__main__":
     myshell = Hnbb()
